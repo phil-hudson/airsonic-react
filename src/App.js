@@ -15,22 +15,34 @@ import Artist from './components/pages/artist.component';
 
 function App() {
     return (<Router>
-            <div className="App">
+            <div className="App" style={{
+                display: 'flex',                   /* defines flexbox */
+                flexDirection: 'column',          /* top to bottom */
+                flex: 1,
+            }}>
                 <NavTop/>
                 <div style={{paddingTop: '56px'}}/>
                 <SideNav/>
-                <Switch>
+                <div style={{
+                    display: 'flex',                   /* defines flexbox */
+                    flexDirection: 'column',          /* top to bottom */
+                    flex: 1,
+                }}>
                     <div style={{'marginLeft': '160px'}}>
-                        <Route exact path='/' component={Login}/>
-                        <Route exact path='/home' component={Home}/>
-                        <Route exact path='/album/:id' component={Album}/>
-                        <Route exact path='/search:query' component={SearchResults}/>
-                        <Route exact path='/player' component={Player}/>
-                        <Route exact path='/playlists' component={Playlists}/>
-                        <Route exact path='/playlist/:id' component={Playlist}/>
-                        <Route exact path='/artist/:id' component={Artist}/>
+                        <Switch>
+                            <Route exact path='/' component={Login}/>
+                            <Route exact path='/home' component={Home}/>
+                            <Route exact path='/album/:id' component={Album}/>
+                            <Route exact path='/search:query' component={SearchResults}/>
+                            <Route exact path='/player' component={Player}/>
+                            <Route exact path='/playlists' component={Playlists}/>
+                            <Route exact path='/playlist/:id' component={Playlist}/>
+                            <Route exact path='/artist/:id' component={Artist}/>
+
+                        </Switch>
                     </div>
-                </Switch>
+                    <Player/>
+                </div>
             </div>
         </Router>
     );

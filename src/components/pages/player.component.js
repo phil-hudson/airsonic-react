@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import UpNextPlaylist from "../generic/UpNextPlaylist.component";
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import AudioPlayer from "../generic/AudioPlayer.component";
 
 
@@ -13,9 +13,9 @@ function mapStateToProps(state) {
 const Player = (props) => {
 
     return (
-        <div>
-            <AudioPlayer/>
-            <UpNextPlaylist />
+        <div  style={{marginTop: 'auto'}}>
+                <AudioPlayer/>
+                <UpNextPlaylist/>
         </div>
     );
 

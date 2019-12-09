@@ -46,71 +46,78 @@ const AudioPlayer = (props) => {
             return () => {};
         }
 
-        audio.src = APIServiceUtil.augmentAirsonicAPI('/rest/stream?id=' + props.trackList[props.currentTrack].id);
-        audio.preload = 'auto';
+        // TODO only for testing
+        if (props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack]  !== 'undefined') {
 
-        // state setters wrappers
-        const setAudioTime = () => props.setElapsedTime(audio.currentTime);
 
-        const handleEnded = () => {
-            console.log('ended');
-            props.removeTrackAtPlaylistIndex(props.currentTrack);
-            setAudioTime(0);
-        };
+            audio.src = APIServiceUtil.augmentAirsonicAPI('/rest/stream?id=' + props.trackList[props.currentTrack].id);
+            audio.preload = 'auto';
 
-        // DOM listeners: update React state on DOM events
-        audio.addEventListener("loadeddata", setAudioTime);
-        audio.addEventListener("timeupdate", setAudioTime);
-        audio.addEventListener("ended", handleEnded);
+            // state setters wrappers
+            const setAudioTime = () => props.setElapsedTime(audio.currentTime);
 
-        // React state listeners: update DOM on React state changes
-        switch (props.playingState) {
-            case PlayingStateEnum.PLAYING:
-                audio.play();
-                break;
-            case PlayingStateEnum.PAUSED:
-                audio.pause();
-                break;
-            default:
-                break;
-        }
+            const handleEnded = () => {
+                console.log('ended');
+                props.removeTrackAtPlaylistIndex(props.currentTrack);
+                setAudioTime(0);
+            };
 
-        // effect cleanup
-        return () => {
-            audio.removeEventListener("loadeddata", setAudioTime);
-            audio.removeEventListener("timeupdate", setAudioTime);
-            audio.removeEventListener("ended", handleEnded);
+            // DOM listeners: update React state on DOM events
+            audio.addEventListener("loadeddata", setAudioTime);
+            audio.addEventListener("timeupdate", setAudioTime);
+            audio.addEventListener("ended", handleEnded);
+
+            // React state listeners: update DOM on React state changes
+            switch (props.playingState) {
+                case PlayingStateEnum.PLAYING:
+                    audio.play();
+                    break;
+                case PlayingStateEnum.PAUSED:
+                    audio.pause();
+                    break;
+                default:
+                    break;
+            }
+
+            // effect cleanup
+            return () => {
+                audio.removeEventListener("loadeddata", setAudioTime);
+                audio.removeEventListener("timeupdate", setAudioTime);
+                audio.removeEventListener("ended", handleEnded);
+            }
         }
     //    TODO add click time here to trigger rerender
     }, [props.currentTrack, props.trackList, clickedTime]);
 
     // play handler effect
     useEffect(() => {
-        const audio = document.getElementById("audio");
+        // TODO only for testing
+        if (props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack]  !== 'undefined') {
+            const audio = document.getElementById("audio");
 
-        // React state listeners: update DOM on React state changes
-        switch (props.playingState) {
-            case PlayingStateEnum.PLAYING:
-                audio.play();
-                break;
-            case PlayingStateEnum.PAUSED:
-                audio.pause();
-                break;
-            default:
-                break;
+            // React state listeners: update DOM on React state changes
+            switch (props.playingState) {
+                case PlayingStateEnum.PLAYING:
+                    audio.play();
+                    break;
+                case PlayingStateEnum.PAUSED:
+                    audio.pause();
+                    break;
+                default:
+                    break;
+            }
         }
     }, [props.playingState]);
 
-    const coverArtURI = APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + props.trackList[props.currentTrack].coverArt);
     return (
-        <div> {props.trackList[props.currentTrack] !== null ? (
+        <div> {props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack]  !== 'undefined' ? (
             <div className="player">
                 <audio id="audio">
                     <source id='audioSource' src='' />
                     Your browser does not support the <code>audio</code> element.
                 </audio>
 
-                <img height='160px' width='160px' src={coverArtURI}/>
+                <img height='160px' width='160px' src={APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + props.trackList[props.currentTrack].coverArt)}/>
                 <Song songName={props.trackList[props.currentTrack].title} songArtist={props.trackList[props.currentTrack].artist}/>
                 <div className="controls">
                     {props.playingState === PlayingStateEnum.PLAYING ?
@@ -121,7 +128,12 @@ const AudioPlayer = (props) => {
                          onTimeUpdate={(time) => setClickedTime(time)}/>
                 </div>
             </div>) : (
-            <div><p>current track is null</p></div>
+            //    TODO stop duplication, fix this horrendous style
+            <div className="player"  style={{flex :1, marginLeft: '160px'}}>
+                <div className="song">
+                    <h1 className="song__title">no songggggggggggggggggggggggg</h1>
+                </div>
+            </div>
         )
         }
         </div>

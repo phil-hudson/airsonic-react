@@ -27,7 +27,6 @@ const sideNavLinkStyle = {
     return (
         <div style={sideNavStyle}>
             <div style={{paddingTop: '56px'}}/>
-            <Link style={sideNavLinkStyle} to="/player">Player</Link>
             <Link style={sideNavLinkStyle} to="/playlists">Playlists</Link>
             <a style={sideNavLinkStyle} href="#">Albums</a>
             <a style={sideNavLinkStyle} href="#">Artists</a>
