@@ -4,7 +4,7 @@ import {removeTrackAtPlaylistIndex, setCurrentTrack} from '../../actions/player.
 import {bindActionCreators} from 'redux'
 import {DeleteOutline, PlayCircleOutline} from '@material-ui/icons';
 import {Link} from 'react-router-dom';
-import '../../css/upNext.row.scss'
+import '../../css/up-next.scss'
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({removeTrackAtPlaylistIndex, setCurrentTrack}, dispatch)

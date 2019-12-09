@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
 import {removeTrackAtPlaylistIndex, clearPlaylist} from '../../actions/player.actions'
 import UpNextRow from './UpNextRow.component';
-import {ArrowDropDown, ArrowDropUp} from "@material-ui/icons";
+import {ArrowDropDownOutlined, ArrowDropUpOutlined, Clear} from "@material-ui/icons";
 
 function mapStateToProps(state) {
     return {
@@ -18,26 +18,29 @@ function mapDispatchToProps(dispatch) {
 const UpNextPlaylist = (props) => {
     const [isShown, setIsShown] = useState(false);
     return (
-        <div>
-            <h2>Up next</h2>
+        <div className={'up-next-container'}>
+            <div style={{marginRight: '10px'}}>
+                <h2>Up next</h2>
+            </div>
             {
                 isShown ? (
                     <div>
-                        <ArrowDropUp onClick={() => setIsShown(false)} />
-                        <button className="btn btn-outline-info bg-white" type="submit" onClick={e => {
-                            e.preventDefault();
-                            props.clearPlaylist()
-                        }}>Clear playlist
-                        </button>
-                        <div style={{textAlign: 'left'}}>
-                            {props.trackList.map((track, index) =>
-                                <UpNextRow track={track} index={index} key={index}/>
-                            )}
+                        <ArrowDropUpOutlined className='pointer' onClick={() => setIsShown(false)}/>
+                        <div style={{display: 'flex', flexDirection: 'column'}}>
+                            <div className={'pointer'} onClick={() => props.clearPlaylist()}>
+                                <Clear/>
+                                <span>Clear up next</span>
+                            </div>
+                            <div style={{display: 'flex', flexDirection: 'column'}}>
+                                    {props.trackList.map((track, index) =>
+                                        <UpNextRow track={track} index={index} key={index}/>
+                                    )}
+                            </div>
                         </div>
                     </div>
                 ) : (
                     <div>
-                        <ArrowDropDown onClick={() => setIsShown(true)} />
+                        <ArrowDropDownOutlined className='pointer' onClick={() => setIsShown(true)}/>
                     </div>
                 )
             }

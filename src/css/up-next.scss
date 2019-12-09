@@ -1,0 +1,24 @@
+
+.up-next-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #212527;
+  color: white;
+  flex-direction: column;
+
+}
+
+.upNextRowContainer {
+  line-height: 1.2;
+  padding-left: 4px;
+  align-content: flex-start;
+}
+
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+//}
