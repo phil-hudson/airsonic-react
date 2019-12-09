@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 const Player = (props) => {
 
     return (
-        <div  style={{marginTop: 'auto'}}>
+        <div  style={{marginTop: 'auto', marginLeft: '160px'}}>
                 <AudioPlayer/>
                 <UpNextPlaylist/>
         </div>
