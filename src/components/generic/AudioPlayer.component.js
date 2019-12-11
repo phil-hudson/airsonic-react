@@ -12,10 +12,10 @@ import {Link} from 'react-router-dom';
 
 function mapStateToProps(state) {
     return {
-        trackList: state.trackList,
-        currentTrack: state.currentTrack,
-        elapsedTime: state.elapsedTime,
-        playingState: state.playingState,
+        trackList: state.playerReducer.trackList,
+        currentTrack: state.playerReducer.currentTrack,
+        elapsedTime: state.playerReducer.elapsedTime,
+        playingState: state.playerReducer.playingState,
     }
 }
 

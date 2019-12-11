@@ -7,7 +7,7 @@ import {ArrowDropDownOutlined, ArrowDropUpOutlined, Clear} from "@material-ui/ic
 
 function mapStateToProps(state) {
     return {
-        trackList: state.trackList,
+        trackList: state.playerReducer.trackList,
     }
 }
 

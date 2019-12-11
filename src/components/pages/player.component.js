@@ -7,7 +7,7 @@ import {ArrowDropDownOutlined, ArrowDropUpOutlined} from '@material-ui/icons';
 
 function mapStateToProps(state) {
     return {
-        trackList: state.trackList,
+        trackList: state.playerReducer.trackList,
     }
 }
 

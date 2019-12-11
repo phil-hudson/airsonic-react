@@ -1,12 +1,20 @@
 import React, {useState} from "react";
 import * as CryptoJS from 'crypto-js';
 import {useHistory} from "react-router"
+import {bindActionCreators} from 'redux';
+import {setSuccessfulAuth} from '../../actions/auth.actions';
+import {connect} from 'react-redux';
 
-const Login = () => {
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({setSuccessfulAuth}, dispatch)
+}
+
+const Login = (props) => {
 
     const username = localStorage.getItem('username');
     const server = localStorage.getItem('server');
-    const [inputs, setInputs] = useState({"username": username, "password": "", "serverAddress": server});
+    const [inputs, setInputs] = useState({"username": username, "password": "", "serverAddress": server, 'remember': false});
     const history = useHistory()
     const handleInputChange = (event) => {
         event.persist();
@@ -17,7 +25,7 @@ const Login = () => {
             event.preventDefault();
         }
         const password = hashPassword(inputs.password);
-        loginRequest(inputs.serverAddress, inputs.username, password.token, password.salt);
+        loginRequest(inputs.serverAddress, inputs.username, password.token, password.salt, inputs.remember);
     };
     const hashPassword = (password) => {
         const salt = CryptoJS.enc.Hex.stringify(CryptoJS.lib.WordArray.random(20));
@@ -29,7 +37,7 @@ const Login = () => {
         };
     };
 
-    const loginRequest = (server, username, token, salt) => {
+    const loginRequest = (server, username, token, salt, remember) => {
         const appName = 'ReactFrontend';
         fetch(`${server}/rest/ping.view?u=${username}&t=${token}&s=${salt}&v=1.15.0&c=${appName}&f=json`, {
             crossDomain: true,
@@ -42,10 +50,13 @@ const Login = () => {
                 console.log(data);
                 if (data['subsonic-response']['status'] === 'ok') {
                     // store token
-                    localStorage.setItem('server', server);
-                    localStorage.setItem('username', username);
-                    localStorage.setItem('token', token);
-                    localStorage.setItem('salt', salt);
+                    if (remember === true) {
+                        localStorage.setItem('server', server);
+                        localStorage.setItem('username', username);
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('salt', salt);
+                    }
+                    props.setSuccessfulAuth(true);
                     history.push("/home")
                 } else {
                     console.warn(data);
@@ -80,8 +91,8 @@ const Login = () => {
 
             <div className="form-group">
                 <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" id="customCheck1"/>
-                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                    <input type="checkbox" className="custom-control-input" name="remember" id="remember"/>
+                    <label className="custom-control-label" htmlFor="remember">Remember me</label>
                 </div>
             </div>
 
@@ -96,4 +107,4 @@ const Login = () => {
 
 }
 
-export default Login;
+export default connect(null, mapDispatchToProps)(Login);

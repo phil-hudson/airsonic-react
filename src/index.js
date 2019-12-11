@@ -7,12 +7,18 @@ import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import playerReducer from './reducers/player.reducer';
+import authReducer from './reducers/auth.reducer';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(playerReducer, composeWithDevTools(
+const rootReducer = combineReducers({
+    playerReducer,
+    authReducer,
+});
+
+const store = createStore(rootReducer, composeWithDevTools(
     applyMiddleware(),
     // other store enhancers if any
 ));
