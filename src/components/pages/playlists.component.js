@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from "react";
 import APIServiceUtil from '../../services/APIServiceUtil';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import NavTop from './navbar.component';
-import AlbumGrid from '../generic/AlbumGrid.component';
-import SideNav from './sidenav.component';
 import PlaylistGrid from '../generic/PlaylistGrid.component';
 
 const Playlists = () => {

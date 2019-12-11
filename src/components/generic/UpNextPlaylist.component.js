@@ -16,7 +16,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 const UpNextPlaylist = (props) => {
-    const [isShown, setIsShown] = useState(false);
+    const [isShown, setIsShown] = useState(true);
     return (
         <div className={'up-next-container'}>
             <div style={{marginRight: '10px'}}>

@@ -86,7 +86,6 @@ const AudioPlayer = (props) => {
                 audio.removeEventListener("ended", handleEnded);
             }
         }
-    //    TODO add click time here to trigger rerender
     }, [props.currentTrack, props.trackList, clickedTime]);
 
     // play handler effect
