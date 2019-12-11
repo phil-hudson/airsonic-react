@@ -18,7 +18,7 @@ const UpNextRow = ({track, index, isPlaying, removeTrackAtPlaylistIndex, setCurr
             <DeleteOutline style={{paddingRight: 12, cursor: 'pointer'}}
                            onClick={() => removeTrackAtPlaylistIndex(index)}/>
             <span onClick={() => setCurrentTrack(index)}
-                  style={{fontSize: 12, paddingRight: 12, flex: 1, cursor: 'pointer'}}
+                  style={{ paddingRight: 12, flex: 1, cursor: 'pointer'}}
                   about='Play now'>{track.title} - {track.artist}</span>
         </div>);
 }
