@@ -26,14 +26,20 @@ const UpNextPlaylist = (props) => {
                     <div>
                         <ArrowDropUpOutlined className='pointer' onClick={() => setIsShown(false)}/>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            <div className={'pointer'} onClick={() => props.clearPlaylist()}>
-                                <Clear style={{paddingRight: '12px'}}/>
-                                <span>Clear up next</span>
-                            </div>
                             <div style={{display: 'flex', flexDirection: 'column', textAlign: 'left'}}>
-                                {props.trackList.map((track, index) =>
-                                    <UpNextRow track={track} index={index} key={index}
-                                               isPlaying={props.currentTrack === index}/>
+                                {props.trackList.length > 0 ? (
+                                    <div>
+                                        <div className={'pointer'} onClick={() => props.clearPlaylist()}>
+                                            <Clear style={{paddingRight: '12px'}}/>
+                                            <span>Clear up next</span>
+                                        </div>
+                                        {props.trackList.map((track, index) =>
+                                            <UpNextRow track={track} index={index} key={index}
+                                                       isPlaying={props.currentTrack === index}/>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <p>No tracks in up next</p>
                                 )}
                             </div>
                         </div>

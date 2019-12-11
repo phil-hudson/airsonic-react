@@ -134,7 +134,7 @@ const AudioPlayer = (props) => {
             //    TODO stop duplication, fix this horrendous style
             <div className="player"  style={{flex :1}}>
                 <div className="song">
-                    <h1 className="song__title">no songggggggggggggggggggggggg</h1>
+                    <h1 className="song__title">No song selected</h1>
                 </div>
             </div>
         )
