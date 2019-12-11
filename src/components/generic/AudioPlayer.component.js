@@ -58,7 +58,11 @@ const AudioPlayer = (props) => {
 
             const handleEnded = () => {
                 console.log('ended');
-                props.removeTrackAtPlaylistIndex(props.currentTrack);
+                if (props.trackList.length > props.currentTrack + 1) {
+                    props.setCurrentTrack(props.currentTrack + 1)
+                } else {
+                    props.setCurrentTrack(0)
+                }
                 setAudioTime(0);
             };
 
