@@ -8,6 +8,7 @@ import {ArrowDropDownOutlined, ArrowDropUpOutlined, Clear} from "@material-ui/ic
 function mapStateToProps(state) {
     return {
         trackList: state.playerReducer.trackList,
+        currentTrack: state.playerReducer.currentTrack,
     }
 }
 
@@ -33,7 +34,7 @@ const UpNextPlaylist = (props) => {
                             </div>
                             <div style={{display: 'flex', flexDirection: 'column'}}>
                                     {props.trackList.map((track, index) =>
-                                        <UpNextRow track={track} index={index} key={index}/>
+                                        <UpNextRow track={track} index={index} key={index} isPlaying={props.currentTrack === index}/>
                                     )}
                             </div>
                         </div>

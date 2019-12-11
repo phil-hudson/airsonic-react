@@ -3,22 +3,23 @@ import {connect} from 'react-redux'
 import {removeTrackAtPlaylistIndex, setCurrentTrack} from '../../actions/player.actions'
 import {bindActionCreators} from 'redux'
 import {DeleteOutline, PlayCircleOutline} from '@material-ui/icons';
-import {Link} from 'react-router-dom';
 import '../../css/up-next.scss'
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({removeTrackAtPlaylistIndex, setCurrentTrack}, dispatch)
 }
 
-const UpNextRow = ({track, index, removeTrackAtPlaylistIndex, setCurrentTrack}) => {
+const UpNextRow = ({track, index, isPlaying, removeTrackAtPlaylistIndex, setCurrentTrack}) => {
     return (
         <div className='upNextRowContainer' key={index}>
+            {isPlaying && (
+                <PlayCircleOutline style={{paddingRight: 12}}/>
+            )}
             <DeleteOutline style={{paddingRight: 12, cursor: 'pointer'}}
-                              onClick={() => removeTrackAtPlaylistIndex(index)}/>
-            <PlayCircleOutline style={{paddingRight: 12, cursor: 'pointer'}}
-                           onClick={() => setCurrentTrack(index)}/>
-            <span style={{fontSize: 12, paddingRight: 12, flex: 1}}>{track.title} - {track.artistId ? (
-                <Link to={'/artist/' + track.artistId}>{track.artist}</Link>) : (<span>{track.artist}</span>)} </span>
+                           onClick={() => removeTrackAtPlaylistIndex(index)}/>
+            <span onClick={() => setCurrentTrack(index)}
+                  style={{fontSize: 12, paddingRight: 12, flex: 1, cursor: 'pointer'}}
+                  about='Play now'>{track.title} - {track.artist}</span>
         </div>);
 }
 
