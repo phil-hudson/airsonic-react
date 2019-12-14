@@ -1,8 +1,8 @@
 import React from "react";
-import { PauseCircleFilled } from "@material-ui/icons";
+import {PauseCircleFilled} from "@material-ui/icons";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {pause, play} from "../../../actions/player.actions";
+import {pause} from "../../../actions/player.actions";
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({pause}, dispatch)

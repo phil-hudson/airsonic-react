@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux';
 import {setSuccessfulAuth} from '../../actions/auth.actions';
 import {connect} from 'react-redux';
 
-
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({setSuccessfulAuth}, dispatch)
 }

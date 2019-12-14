@@ -1,13 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import APIServiceUtil from '../../services/APIServiceUtil';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import NavTop from './navbar.component';
-import AlbumGrid from '../generic/AlbumGrid.component';
-import {withRouter, RouteComponentProps} from "react-router";
 import TrackList from '../generic/TrackList.component';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import { addTracks } from '../../actions/player.actions'
+import {addTracks} from '../../actions/player.actions'
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({addTracks}, dispatch)

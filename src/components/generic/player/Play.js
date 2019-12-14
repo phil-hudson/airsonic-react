@@ -1,5 +1,5 @@
 import React from "react";
-import {PauseCircleFilled, PlayCircleFilled} from "@material-ui/icons";
+import {PlayCircleFilled} from "@material-ui/icons";
 import {bindActionCreators} from "redux";
 import {play} from "../../../actions/player.actions";
 import {connect} from "react-redux";

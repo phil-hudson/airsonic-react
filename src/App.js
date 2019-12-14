@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import NavTop from './components/pages/navbar.component';
 import SideNav from './components/pages/sidenav.component';
 import Login from './components/pages/login.component';

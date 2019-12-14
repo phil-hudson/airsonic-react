@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
 import playerReducer from './reducers/player.reducer';
 import authReducer from './reducers/auth.reducer';
-import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {Provider} from 'react-redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
     playerReducer,

@@ -1,6 +1,5 @@
 import React from "react";
 import moment from "moment";
-import momentDurationFormatSetup from "moment-duration-format";
 import '../../../css/player.scss'
 
 export default function Bar(props) {

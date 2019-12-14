@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
-import {setCurrentTrack, setElapsedTime, removeTrackAtPlaylistIndex} from '../../actions/player.actions'
+import {removeTrackAtPlaylistIndex, setCurrentTrack, setElapsedTime} from '../../actions/player.actions'
 import PlayingStateEnum from '../../enums/PlayingState.enum';
 import Pause from "./player/Pause";
 import Play from "./player/Play";
 import Song from "./player/Song";
 import Bar from "./player/Bar";
 import APIServiceUtil from "../../services/APIServiceUtil";
-import {Link} from 'react-router-dom';
 
 function mapStateToProps(state) {
     return {

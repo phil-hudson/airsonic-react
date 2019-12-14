@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {connect} from 'react-redux'
 import {bindActionCreators} from "redux";
-import {removeTrackAtPlaylistIndex, clearPlaylist} from '../../actions/player.actions'
+import {clearPlaylist, removeTrackAtPlaylistIndex} from '../../actions/player.actions'
 import UpNextRow from './UpNextRow.component';
 import {ArrowDropDownOutlined, ArrowDropUpOutlined, Clear} from "@material-ui/icons";
 

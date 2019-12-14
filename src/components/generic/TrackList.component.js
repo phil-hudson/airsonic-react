@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react";
-import AlbumWithArtworkComponent from './AlbumWithArtwork.component';
+import React from "react";
 import TrackRow from './TrackRow.component';
 
 type Props = {

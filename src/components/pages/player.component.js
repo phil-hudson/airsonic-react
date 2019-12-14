@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import UpNextPlaylist from "../generic/UpNextPlaylist.component";
 import {connect} from 'react-redux'
 import AudioPlayer from "../generic/AudioPlayer.component";
