@@ -17,14 +17,16 @@ function mapDispatchToProps(dispatch) {
 }
 
 const UpNextPlaylist = (props) => {
-    const [isShown, setIsShown] = useState(true);
+    const [isShown, setIsShown] = useState(false);
     return (
         <div className={'up-next-container'}>
-            <h2>Up next</h2>
             {
                 isShown ? (
                     <div>
+                        <div style={{display:'flex', flexDirection: 'row'}}>
+                        <p>Up next</p>
                         <ArrowDropUpOutlined className='pointer' onClick={() => setIsShown(false)}/>
+                        </div>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
                             <div style={{display: 'flex', flexDirection: 'column', textAlign: 'left'}}>
                                 {props.trackList.length > 0 ? (
@@ -45,7 +47,8 @@ const UpNextPlaylist = (props) => {
                         </div>
                     </div>
                 ) : (
-                    <div>
+                    <div style={{display:'flex', flexDirection: 'row'}}>
+                        <p>Up next</p>
                         <ArrowDropDownOutlined className='pointer' onClick={() => setIsShown(true)}/>
                     </div>
                 )

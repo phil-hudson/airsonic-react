@@ -128,7 +128,7 @@ const AudioPlayer = (props) => {
                     Your browser does not support the <code>audio</code> element.
                 </audio>
                 <div className="song">
-                    <h1 className="song__title">No song selected</h1>
+                    <p className="song__title">No song selected</p>
                 </div>
             </div>
         )

@@ -13,21 +13,20 @@ function mapStateToProps(state) {
 const Player = (props) => {
     return (
         // TODO move to class
-        <div style={{
-            height: props.toggled ? '100%' : '',
-            bottom: 0,
-            position: 'fixed',
-            width: '100%',
-            paddingTop: props.toggled ? '66px' : '',
-            marginLeft: '160px',
-            backgroundColor: '#212527',
-            color: 'white'
-        }}>
-            <ArrowDropDownOutlined className='pointer' onClick={() => props.setPlayerToggled(false)}/>
-            <ArrowDropUpOutlined className='pointer' onClick={() => props.setPlayerToggled(true)}/>
-            <AudioPlayer/>
+            <div style={{
+                height: props.toggled ? '100%' : '',
+                paddingTop: props.toggled ? '66px' : '',
+                marginLeft: '160px',
+                backgroundColor: '#212527',
+                color: 'white',
+                // TODO fix force player to bottom, allow upnext to scroll underneath!
+            }}>
+                <ArrowDropDownOutlined className='pointer' onClick={() => props.setPlayerToggled(false)}/>
+                <ArrowDropUpOutlined className='pointer' onClick={() => props.setPlayerToggled(true)}/>
+                <AudioPlayer/>
             <UpNextPlaylist/>
         </div>
+
     );
 
 }
