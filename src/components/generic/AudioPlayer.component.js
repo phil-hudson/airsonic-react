@@ -26,6 +26,7 @@ function mapDispatchToProps(dispatch) {
 const AudioPlayer = (props) => {
     const [clickedTime, setClickedTime] = useState(null);
 
+    // effect for seek
     useEffect(() => {
         const audio = document.getElementById("audio");
         if (clickedTime !== null) {
@@ -36,15 +37,10 @@ const AudioPlayer = (props) => {
 
     // main effect
     useEffect(() => {
-        //TODO tidy up and remove after testing
-        if (props.trackList.length === 0) {
-            console.warn('track list empty cannot play')
-            return;
-        }
         const audio = document.getElementById("audio");
 
         // TODO only for testing
-        if (props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack]  !== 'undefined') {
+        if (props.currentTrack !== null && props.trackList.length > props.currentTrack) {
 
             audio.src = APIServiceUtil.augmentAirsonicAPI('/rest/stream?id=' + props.trackList[props.currentTrack].id);
             audio.preload = 'auto';
@@ -85,38 +81,37 @@ const AudioPlayer = (props) => {
                 audio.removeEventListener("ended", handleEnded);
             }
         }
-    }, [props.currentTrack, props.trackList,]);
+    }, [props.currentTrack, props.trackList]);
 
     // play handler effect
     useEffect(() => {
-        // TODO only for testing
-        if (props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack]  !== 'undefined') {
-            const audio = document.getElementById("audio");
+        const audio = document.getElementById("audio");
 
-            // React state listeners: update DOM on React state changes
-            switch (props.playingState) {
-                case PlayingStateEnum.PLAYING:
-                    audio.play();
-                    break;
-                case PlayingStateEnum.PAUSED:
-                    audio.pause();
-                    break;
-                default:
-                    break;
-            }
+        // React state listeners: update DOM on React state changes
+        switch (props.playingState) {
+            case PlayingStateEnum.PLAYING:
+                audio.play();
+                break;
+            case PlayingStateEnum.PAUSED:
+                audio.pause();
+                break;
+            default:
+                break;
         }
     }, [props.playingState]);
 
     return (
-        <div> {props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack]  !== 'undefined' ? (
+        <div> {props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack] !== 'undefined' ? (
             <div className="player">
                 <audio id="audio">
-                    <source id='audioSource' src='' />
+                    <source id='audioSource' src=''/>
                     Your browser does not support the <code>audio</code> element.
                 </audio>
 
-                <img height='160px' width='160px' src={APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + props.trackList[props.currentTrack].coverArt)}/>
-                <Song songName={props.trackList[props.currentTrack].title} songArtist={props.trackList[props.currentTrack].artist}/>
+                <img height='160px' width='160px'
+                     src={APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + props.trackList[props.currentTrack].coverArt)}/>
+                <Song songName={props.trackList[props.currentTrack].title}
+                      songArtist={props.trackList[props.currentTrack].artist}/>
                 <div className="controls">
                     {props.playingState === PlayingStateEnum.PLAYING ?
                         <Pause/> :
@@ -127,7 +122,11 @@ const AudioPlayer = (props) => {
                 </div>
             </div>) : (
             //    TODO stop duplication, fix this horrendous style
-            <div className="player"  style={{flex :1}}>
+            <div className="player" style={{flex: 1}}>
+                <audio id="audio">
+                    <source id='audioSource' src=''/>
+                    Your browser does not support the <code>audio</code> element.
+                </audio>
                 <div className="song">
                     <h1 className="song__title">No song selected</h1>
                 </div>
