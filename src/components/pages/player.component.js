@@ -20,8 +20,13 @@ const Player = (props) => {
                 color: 'white',
                 // TODO fix force player to bottom, allow upnext to scroll underneath!
             }}>
-                <ArrowDropDownOutlined className='pointer' onClick={() => props.setPlayerToggled(false)}/>
-                <ArrowDropUpOutlined className='pointer' onClick={() => props.setPlayerToggled(true)}/>
+                {props.toggled ? (
+                    <ArrowDropDownOutlined className='pointer' onClick={() => props.setPlayerToggled(false)}/>
+
+                ) : (
+                    <ArrowDropUpOutlined className='pointer' onClick={() => props.setPlayerToggled(true)}/>
+
+                )}
                 <AudioPlayer/>
             <UpNextPlaylist/>
         </div>
