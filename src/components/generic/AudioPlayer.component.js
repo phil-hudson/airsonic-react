@@ -26,29 +26,25 @@ function mapDispatchToProps(dispatch) {
 const AudioPlayer = (props) => {
     const [clickedTime, setClickedTime] = useState(null);
 
+    useEffect(() => {
+        const audio = document.getElementById("audio");
+        if (clickedTime !== null) {
+            audio.currentTime = clickedTime;
+            setClickedTime(null);
+        }
+    }, [clickedTime]);
+
     // main effect
     useEffect(() => {
         //TODO tidy up and remove after testing
-        console.log('effect line 30 audio player called');
         if (props.trackList.length === 0) {
             console.warn('track list empty cannot play')
             return;
         }
         const audio = document.getElementById("audio");
 
-        // TODO fix this, it keeps jumping back to 0
-        if (clickedTime !== null) {
-            console.log(clickedTime)
-            audio.oncanplay = function() {
-                audio.currentTime = clickedTime;
-            };
-            setClickedTime(null);
-            return () => {};
-        }
-
         // TODO only for testing
         if (props.trackList.length > 0 && props.currentTrack !== null && typeof props.trackList[props.currentTrack]  !== 'undefined') {
-
 
             audio.src = APIServiceUtil.augmentAirsonicAPI('/rest/stream?id=' + props.trackList[props.currentTrack].id);
             audio.preload = 'auto';
@@ -57,7 +53,6 @@ const AudioPlayer = (props) => {
             const setAudioTime = () => props.setElapsedTime(audio.currentTime);
 
             const handleEnded = () => {
-                console.log('ended');
                 if (props.trackList.length > props.currentTrack + 1) {
                     props.setCurrentTrack(props.currentTrack + 1)
                 } else {
@@ -90,7 +85,7 @@ const AudioPlayer = (props) => {
                 audio.removeEventListener("ended", handleEnded);
             }
         }
-    }, [props.currentTrack, props.trackList, clickedTime]);
+    }, [props.currentTrack, props.trackList,]);
 
     // play handler effect
     useEffect(() => {
