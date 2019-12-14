@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import AudioPlayer from "../generic/AudioPlayer.component";
 import {ArrowDropDownOutlined, ArrowDropUpOutlined} from '@material-ui/icons';
 
-
 function mapStateToProps(state) {
     return {
         trackList: state.playerReducer.trackList,
@@ -12,9 +11,18 @@ function mapStateToProps(state) {
 }
 
 const Player = (props) => {
-
     return (
-        <div  style={{marginTop: 'auto', marginLeft: '160px', height:'100%', backgroundColor: '#212527', color: 'white'}}>
+        // TODO move to class
+        <div style={{
+            height: props.toggled ? '100%' : '',
+            bottom: 0,
+            position: 'fixed',
+            width: '100%',
+            paddingTop: props.toggled ? '66px' : '',
+            marginLeft: '160px',
+            backgroundColor: '#212527',
+            color: 'white'
+        }}>
             <ArrowDropDownOutlined className='pointer' onClick={() => props.setPlayerToggled(false)}/>
             <ArrowDropUpOutlined className='pointer' onClick={() => props.setPlayerToggled(true)}/>
             <AudioPlayer/>

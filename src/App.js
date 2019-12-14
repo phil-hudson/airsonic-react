@@ -48,7 +48,7 @@ function App() {
                                     </Switch>
                                 </div>
                             )}
-                            <Player setPlayerToggled={setPlayerToggled}/>
+                            <Player toggled={playerToggled} setPlayerToggled={setPlayerToggled}/>
                         </div>
                     </Route>
                 </Switch>
