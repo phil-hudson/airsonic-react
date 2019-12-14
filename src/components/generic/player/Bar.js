@@ -1,5 +1,7 @@
 import React from "react";
 import moment from "moment";
+// eslint-disable-next-line no-unused-vars
+import momentDurationFormatSetup from "moment-duration-format";
 import '../../../css/player.scss'
 
 export default function Bar(props) {
