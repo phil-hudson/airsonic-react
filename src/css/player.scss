@@ -5,14 +5,29 @@
   align-items: center;
   padding: 20px 0;
   background-color: #212527;
+  flex-direction: row;
+
+  .details_container {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    justify-content: space-between;
+
+    .details_and_controls_container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+    }
+  }
 
   .song {
     user-select: none;
     margin: 0 20px;
     .song__title {
-      text-align: left;
       margin: 0;
       color: white;
+      text-align: left;
       &:hover {
         color: grey;
       }
@@ -23,6 +38,7 @@
       color: white;
       font-weight: normal;
       font-size: 1em;
+      text-align: left;
 
       &:hover {
         color: grey;
@@ -63,8 +79,9 @@
   }
 
   .bar {
+    margin: 0 20px;
     user-select: none;
-    width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
 

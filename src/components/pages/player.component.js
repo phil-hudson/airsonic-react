@@ -15,7 +15,6 @@ const Player = (props) => {
         // TODO move to class
             <div style={{
                 height: props.toggled ? '100%' : '',
-                paddingTop: props.toggled ? '66px' : '',
                 marginLeft: '160px',
                 backgroundColor: '#212527',
                 color: 'white',

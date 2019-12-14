@@ -12,6 +12,7 @@ function mapDispatchToProps(dispatch) {
 const UpNextRow = ({track, index, isPlaying, removeTrackAtPlaylistIndex, setCurrentTrack}) => {
     return (
         <div className='upNextRowContainer' key={index}>
+            <span>{index}. </span>
             {isPlaying && (
                 <PlayCircleOutline style={{paddingRight: 12}}/>
             )}

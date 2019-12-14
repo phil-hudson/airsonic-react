@@ -110,13 +110,17 @@ const AudioPlayer = (props) => {
 
                 <img height='160px' width='160px'
                      src={APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + props.trackList[props.currentTrack].coverArt)}/>
-                <Song songName={props.trackList[props.currentTrack].title}
-                      songArtist={props.trackList[props.currentTrack].artist}/>
-                <div className="controls">
-                    {props.playingState === PlayingStateEnum.PLAYING ?
-                        <Pause/> :
-                        <Play/>
-                    }
+                <div className="details_container">
+                    <div className="details_and_controls_container">
+                        <Song songName={props.trackList[props.currentTrack].title}
+                              songArtist={props.trackList[props.currentTrack].artist}/>
+                        <div className="controls">
+                            {props.playingState === PlayingStateEnum.PLAYING ?
+                                <Pause/> :
+                                <Play/>
+                            }
+                        </div>
+                    </div>
                     <Bar curTime={props.elapsedTime} duration={props.trackList[props.currentTrack].duration}
                          onTimeUpdate={(time) => setClickedTime(time)}/>
                 </div>
