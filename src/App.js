@@ -23,7 +23,7 @@ function App() {
             }}>
                 <NavTop/>
                 <div style={{paddingTop: '56px'}}/>
-                <SideNav/>
+                <SideNav toggled={playerToggled} setPlayerToggled={setPlayerToggled}/>
                 <Switch>
                     <Route exact path='/' component={Login}/>
                     {/*TODO sort this mess out*/}
