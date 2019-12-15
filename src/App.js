@@ -11,6 +11,7 @@ import Player from './components/pages/player.component';
 import Playlists from './components/pages/playlists.component';
 import Playlist from './components/pages/playlist.component';
 import Artist from './components/pages/artist.component';
+import Artists from './components/pages/artists.component';
 
 function App() {
     const [playerToggled, setPlayerToggled] = useState(false);
@@ -44,7 +45,7 @@ function App() {
                                         <Route exact path='/playlists' component={Playlists}/>
                                         <Route exact path='/playlist/:id' component={Playlist}/>
                                         <Route exact path='/artist/:id' component={Artist}/>
-
+                                        <Route exact path='/artists' component={Artists}/>
                                     </Switch>
                                 </div>
                             )}
