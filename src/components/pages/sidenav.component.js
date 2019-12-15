@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-const SideNav = (props) => {
+const SideNav = () => {
 
 const sideNavStyle =  {
         height: '100%',
@@ -27,7 +27,6 @@ const sideNavLinkStyle = {
     return (
         <div style={sideNavStyle}>
             <div style={{paddingTop: '56px'}}/>
-            <a style={sideNavLinkStyle} href="#" onClick={() => props.setPlayerToggled(!props.toggled)}>Player</a>
             <Link style={sideNavLinkStyle} to="/playlists">Playlists</Link>
             <a style={sideNavLinkStyle} href="#">Albums</a>
             <a style={sideNavLinkStyle} href="#">Artists</a>
