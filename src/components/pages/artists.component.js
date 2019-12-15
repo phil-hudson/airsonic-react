@@ -32,14 +32,23 @@ const Artists = (props) => {
     return (
         <div>
             {
+                // TODO move to proper component
+                // TODO add filtering
                 artists.length > 0 ? (
                     <div>
                     <h3>Artists</h3>
                         {
-                            artists.map((artistIndex) => {
-                                return artistIndex.artist.map((artist) => {
-                                    return <Link to={'/artist/' + artist.id}>{artist.name}</Link>;
-                                });
+                            artists.map((index) => {
+                                    return (
+                                        <div>
+                                            <p>{index.name}</p>
+                                            {
+                                                index.artist.map((artist) => {
+                                                    return <Link to={'/artist/' + artist.id}>{artist.name}</Link>;
+                                                })
+                                            }
+                                        </div>
+                                )
                             })
                         }
                     </div>
