@@ -66,3 +66,16 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Docker
+
+Quick start local:
+
+`cd /airsonic-react`
+
+`docker build .`
+
+`docker run -p 8080:80 9f031a7d727c` this will be the container id
+
+Then go to http://localhost:8080
