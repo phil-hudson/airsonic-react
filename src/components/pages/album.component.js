@@ -4,6 +4,7 @@ import TrackList from '../generic/TrackList.component';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {addTracks} from '../../actions/player.actions'
+import AddAllTracks from '../AddAllTracks.component';
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({addTracks}, dispatch)
@@ -32,7 +33,11 @@ const Album = (props) => {
                 }
             })
             .catch(console.log)
-    }
+    };
+
+    const addAllTracksToUpNext = () => {
+        props.addTracks(albumTracks);
+    };
 
     useEffect(() => {
         getAlbum(props.match.params.id);
@@ -55,10 +60,7 @@ const Album = (props) => {
                         <div style={{textAlign: 'left', margin: '8px', flex: 1}}>
                             <h2 style={{}}>{album.name}</h2>
                             <h3 style={{}}>{album.artist}</h3>
-                            <button className="btn btn-outline-info bg-white" about='Add album to playlist' type="submit" onClick={e => {
-                                e.preventDefault();
-                                props.addTracks(albumTracks)
-                            }}>+</button>
+                            <AddAllTracks addTracks={addAllTracksToUpNext} />
                         </div>
                     </div>
                     <TrackList tracks={albumTracks}/>

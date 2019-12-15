@@ -4,6 +4,7 @@ import TrackList from '../generic/TrackList.component';
 import {connect} from 'react-redux';
 import {addTracks} from '../../actions/player.actions'
 import {bindActionCreators} from 'redux';
+import AddAllTracks from "../AddAllTracks.component";
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({addTracks}, dispatch)
@@ -39,6 +40,11 @@ const Playlist = (props) => {
         getPlaylist(props.match.params.id);
     }, []);
 
+    const addAllTracksToUpNext = () => {
+        props.addTracks(tracks);
+    };
+
+
     return (
         <div>
             {
@@ -53,10 +59,7 @@ const Playlist = (props) => {
                             <img height='160px' width='160px' src={APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + playlist.coverArt)}/>
                             <div style={{textAlign: 'left', margin: '8px', flex: 1}}>
                                 <h2 style={{}}>{playlist.name}</h2>
-                                <button className="btn btn-outline-info bg-white" about='Add album to playlist' type="submit" onClick={e => {
-                                    e.preventDefault();
-                                    props.addTracks(tracks)
-                                }}>+</button>
+                                <AddAllTracks addTracks={addAllTracksToUpNext} />
                             </div>
                         </div>
                         <TrackList tracks={tracks}/>
