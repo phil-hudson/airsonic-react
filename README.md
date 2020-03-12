@@ -68,7 +68,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 
-## Docker
+## Docker local
 
 Quick start local:
 
@@ -79,3 +79,15 @@ Quick start local:
 `docker run -p 8080:80 9f031a7d727c` this will be the container id
 
 Then go to http://localhost:8080
+
+## Docker deployable
+
+Dockerhub: https://hub.docker.com/r/philhudson91/airsonic-react
+
+If you simply want to deploy this, read the below:
+
+`docker clone philhudson91/airsonic-react`
+
+`docker build . `
+
+`docker run -p 8080:80 philhudson91/airsonic-react`
