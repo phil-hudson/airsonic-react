@@ -5,7 +5,7 @@ import SearchForm from '../generic/SearchForm.component';
 const NavTop = () => {
 
     return (<nav className="navbar navbar-expand-lg navbar-light fixed-top">
-            <div className="container">
+            <div className="container-fluid">
                 <Link className="navbar-brand" to={"/home"}>Airsonic</Link>
                 <SearchForm />
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
