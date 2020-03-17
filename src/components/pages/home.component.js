@@ -5,41 +5,77 @@ import AlbumGrid from '../generic/AlbumGrid.component';
 const Home = () => {
 
     const [randomAlbums, setRandomAlbums] = useState([]);
+    const [newestAlbums, setNewestAlbums] = useState([]);
+    const [recentAlbums, setRecentAlbums] = useState([]);
 
-    const getRandomAlbums = (server, username, token, salt) => {
-        fetch(APIServiceUtil.augmentAirsonicAPI('/rest/getAlbumList2?type=random'), {
+    const getAlbums = async(type) => {
+        let res = await fetch(APIServiceUtil.augmentAirsonicAPI('/rest/getAlbumList2?size=20&type=' + type), {
             crossDomain: true,
             method: 'GET',
-        })
-            .then(res => res.json())
-            .then((data) => {
-                // this.setState({ contacts: data })
-                console.log('success');
-                console.log(data);
-                if (data['subsonic-response']['status'] === 'ok') {
-                    // store songs
-                    setRandomAlbums(data['subsonic-response']['albumList2']['album']);
-                } else {
-                    console.warn(data);
-                }
-            })
-            .catch(console.log)
-    }
+        });
+
+        if (res.status === 200) {
+            res = await res.json();
+            return res['subsonic-response']['albumList2']['album'];
+        }
+
+        throw new Error(res.status);
+    };
+
+    const getRandomAlbums = async () => {
+        let albums = await getAlbums('random');
+        setRandomAlbums(albums);
+    };
+
+    const getNewestAlbums = async () => {
+        let albums = await getAlbums('newest');
+        setNewestAlbums(albums);
+    };
+
+    const getRecentAlbums = async () => {
+        let albums = await getAlbums('recent');
+        setRecentAlbums(albums);
+    };
 
     useEffect(() => {
-        getRandomAlbums();
+        async function loadAlbums() {
+            await getRandomAlbums();
+            await getNewestAlbums();
+            await getRecentAlbums();
+        }
+
+        loadAlbums();
     }, []);
 
     return (
         <div>
+            <h2>Recent</h2>
 
-                {
-                    randomAlbums.length > 0 ? (
-                        <AlbumGrid albums={randomAlbums}/>
-                    ) : (
-                        <p>no songs</p>
-                    )
-                }
+            {
+                recentAlbums.length > 0 ? (
+                    <AlbumGrid albums={recentAlbums}/>
+                ) : (
+                    <p>no songs</p>
+                )
+            }
+            <h2>Newest</h2>
+
+            {
+                newestAlbums.length > 0 ? (
+                    <AlbumGrid albums={newestAlbums}/>
+                ) : (
+                    <p>no songs</p>
+                )
+            }
+            <h2>Random</h2>
+
+            {
+                randomAlbums.length > 0 ? (
+                    <AlbumGrid albums={randomAlbums}/>
+                ) : (
+                    <p>no songs</p>
+                )
+            }
         </div>
     );
 
