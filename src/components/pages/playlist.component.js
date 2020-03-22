@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {addTracks} from '../../actions/player.actions'
 import {bindActionCreators} from 'redux';
 import AddAllTracks from "../AddAllTracks.component";
+import '../../css/_shared.scss';
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({addTracks}, dispatch)
@@ -34,7 +35,7 @@ const Playlist = (props) => {
                 }
             })
             .catch(console.log)
-    }
+    };
 
     useEffect(() => {
         getPlaylist(props.match.params.id);
@@ -44,21 +45,15 @@ const Playlist = (props) => {
         props.addTracks(tracks);
     };
 
-
     return (
         <div>
             {
                 playlist !== null && (
                     <div>
-                        <div style={{
-                            'display': 'flex',
-                            'flexWrap': 'wrap',
-                            'flexDirection': 'row',
-                            'alignItems': 'start',
-                        }}>
+                        <div className='tile-contents'>
                             <img height='160px' width='160px' src={APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + playlist.coverArt)}/>
                             <div style={{textAlign: 'left', margin: '8px', flex: 1}}>
-                                <h2 style={{}}>{playlist.name}</h2>
+                                <h2 className='main-title'>{playlist.name}</h2>
                                 <AddAllTracks addTracks={addAllTracksToUpNext} />
                             </div>
                         </div>
@@ -70,6 +65,6 @@ const Playlist = (props) => {
         </div>
     );
 
-}
+};
 
 export default connect(null, mapDispatchToProps)(Playlist);

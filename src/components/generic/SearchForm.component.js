@@ -18,7 +18,7 @@ export default function SearchForm() {
         }
         // trigger route with query
         history.push("/search-results?query=" + searchQuery);
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit} className="form-inline my-2 my-lg-0">

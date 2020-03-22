@@ -1,5 +1,7 @@
 import React from "react";
 import PlaylistWithArtworkComponent from './PlaylistWithArtwork.component';
+import '../../css/_font.scss';
+import '../../css/_shared.scss';
 
 type Props = {
     playlists: [Object]
@@ -8,19 +10,17 @@ const PlaylistGrid = (props: Props) => {
     const playlists = props.playlists.filter((album) => album.hasOwnProperty('coverArt'));
     return (
         <div>
-            <h2>Playlists</h2>
+            <h2 className='main-title'>Playlists</h2>
 
-
-        <div style={{'display': 'flex', 'flexWrap': 'wrap', 'flexDirection': 'row', 'alignItems': 'center'}}>
-            {
-            playlists.map((playlist) => {
-
-                    return <PlaylistWithArtworkComponent name={playlist.name} artworkID={playlist.coverArt} id={playlist.id}/>
+            <div className='tile-contents'>
+                {
+                    playlists.map((playlist) => {
+                            return <PlaylistWithArtworkComponent name={playlist.name} artworkID={playlist.coverArt}
+                                                                 id={playlist.id}/>
+                        }
+                    )
                 }
-            )
-
-        }
-        </div>
+            </div>
         </div>);
 
 }

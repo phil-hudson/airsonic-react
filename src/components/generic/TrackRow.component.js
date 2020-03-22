@@ -16,6 +16,7 @@ const TrackRow = ({track, addTrack}) => {
             <AddCircleOutline style={{paddingRight: 12, cursor: 'pointer'}} onClick={() => addTrack(track)}/>
             <span style={{fontSize: 12, paddingRight: 12, flex: 1}}>{track.title} - {track.artistId ? (
                 <Link to={'/artist/' + track.artistId}>{track.artist}</Link>) : (<span>{track.artist}</span>)} </span>
-                </div>);
-                }
-                export default connect(null, mapDispatchToProps)(TrackRow);
+        </div>);
+};
+
+export default connect(null, mapDispatchToProps)(TrackRow);

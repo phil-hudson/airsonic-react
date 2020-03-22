@@ -3,7 +3,7 @@ import * as React from 'react';
 import APIServiceUtil from '../../services/APIServiceUtil';
 import {Link} from 'react-router-dom';
 import '../../css/album.scss'
-import '../../css/font.scss'
+import '../../css/_font.scss'
 
 // TODO change to playlist payload type
 type Props = {

@@ -1,17 +1,13 @@
 import React from "react";
 import TrackRow from './TrackRow.component';
+import '../../css/_shared.scss';
 
 type Props = {
     tracks: [Object]
 };
 const TrackList = (props: Props) => {
     return (
-        <div style={{
-            'display': 'flex',
-            'flexWrap': 'no-wrap',
-            'flexDirection': 'column',
-            'alignItems': 'start'
-        }}>
+        <div className='list-contents'>
             {
                 props.tracks.map((track,index) => {
 
@@ -21,5 +17,6 @@ const TrackList = (props: Props) => {
 
             }
         </div>);
-}
+};
+
 export default TrackList;
