@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,600,700,800');
+@import './_colors.scss';
 
 * {
     box-sizing: border-box;
 }
 body {
-    background: #1C8EF9 !important;
+    /* TODO: use $home_main_background from _colors.scss */
+    background: $home-main-background !important;
     min-height: 100vh;
     display: flex;
     font-weight: 400;

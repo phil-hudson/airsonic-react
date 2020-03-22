@@ -6,6 +6,7 @@ const SideNav = () => {
     return (
         <div id='sidebar_container'>
             <div style={{paddingTop: '56px'}}/>
+            <Link className='sidebar_link' to="/home">Home</Link>
             <Link className='sidebar_link' to="/playlists">Playlists</Link>
             <Link  className='sidebar_link' to="/artists">Artists</Link>
             <a  className='sidebar_link' href="#">Settings</a>

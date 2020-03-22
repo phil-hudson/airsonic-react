@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import APIServiceUtil from '../../services/APIServiceUtil';
 import AlbumGrid from '../generic/AlbumGrid.component';
+import '../../css/font.scss';
 
 const Home = () => {
 
@@ -49,7 +50,7 @@ const Home = () => {
 
     return (
         <div>
-            <h2>Recent</h2>
+            <h2 className='home-title'>Recent</h2>
 
             {
                 recentAlbums.length > 0 ? (
@@ -58,7 +59,7 @@ const Home = () => {
                     <p>no songs</p>
                 )
             }
-            <h2>Newest</h2>
+            <h2 className='home-title'>Newest</h2>
 
             {
                 newestAlbums.length > 0 ? (
@@ -67,7 +68,7 @@ const Home = () => {
                     <p>no songs</p>
                 )
             }
-            <h2>Random</h2>
+            <h2 className='home-title'>Random</h2>
 
             {
                 randomAlbums.length > 0 ? (

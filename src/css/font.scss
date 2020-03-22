@@ -1,5 +1,11 @@
+@import './_colors.scss';
+
 .truncate {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.home-title {
+  color: $home-title-color;
 }
