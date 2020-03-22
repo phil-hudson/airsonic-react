@@ -50,7 +50,7 @@ const Home = () => {
 
     return (
         <div>
-            <h2 className='main-title'>Recent</h2>
+            <h1 className='main-title medium-pad'>Recent</h1>
 
             {
                 recentAlbums.length > 0 ? (
@@ -59,7 +59,7 @@ const Home = () => {
                     <p>no songs</p>
                 )
             }
-            <h2 className='main-title'>Newest</h2>
+            <h1 className='main-title medium-pad'>Newest</h1>
 
             {
                 newestAlbums.length > 0 ? (
@@ -68,7 +68,7 @@ const Home = () => {
                     <p>no songs</p>
                 )
             }
-            <h2 className='main-title'>Random</h2>
+            <h1 className='main-title medium-pad'>Random</h1>
 
             {
                 randomAlbums.length > 0 ? (

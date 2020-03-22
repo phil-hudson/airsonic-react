@@ -10,7 +10,7 @@ const PlaylistGrid = (props: Props) => {
     const playlists = props.playlists.filter((album) => album.hasOwnProperty('coverArt'));
     return (
         <div>
-            <h2 className='main-title'>Playlists</h2>
+            <h1 className='main-title  medium-pad'>Playlists</h1>
 
             <div className='tile-contents'>
                 {
