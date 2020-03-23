@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import APIServiceUtil from '../../services/APIServiceUtil';
 import AlbumGrid from '../generic/AlbumGrid.component';
+import '../../css/_font.scss';
 
 const Artist = (props) => {
     const [artist, setArtist] = useState([]);
@@ -34,13 +35,13 @@ const Artist = (props) => {
     return (
         <div>
             { artist!== null && (
-                <h2>{artist.name}</h2>
+                <h2 className={'main-title'}>{artist.name}</h2>
             )}
             <span />
             {
                 albums.length > 0 ? (
                     <div>
-                    <h3>Albums</h3>
+                    <h3 className={'main-title'}>Albums</h3>
                     <AlbumGrid albums={albums}/>
                     </div>
                 ) : (
