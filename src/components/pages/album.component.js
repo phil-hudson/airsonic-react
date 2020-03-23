@@ -58,8 +58,8 @@ const Album = (props) => {
                     }}>
                         <img height='160px' width='160px' src={APIServiceUtil.augmentAirsonicAPI('/rest/getCoverArt?size=320&id=' + album.coverArt)}/>
                         <div style={{textAlign: 'left', margin: '8px', flex: 1}}>
-                            <h2 style={{}}>{album.name}</h2>
-                            <h3 style={{}}>{album.artist}</h3>
+                            <h2 className='main-title'>{album.name}</h2>
+                            <h3 className='secondary-title'>{album.artist}</h3>
                             <AddAllTracks addTracks={addAllTracksToUpNext} />
                         </div>
                     </div>

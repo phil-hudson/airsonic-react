@@ -1,5 +1,20 @@
 @import './_colors.scss';
 
+body {
+  font-weight: 400;
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,label,span,p,a {
+  font-weight: 500;
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+label,span,p,a {
+  font-weight: 300;
+  font-family: 'Roboto Mono', sans-serif;
+}
+
 .truncate {
     white-space: nowrap;
     overflow: hidden;
@@ -8,6 +23,10 @@
 
 .main-title {
   color: $title-color;
+}
+
+.secondary-title {
+  color: $secondary-title-color;
 }
 
 .album-main {
