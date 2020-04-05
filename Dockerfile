@@ -1,9 +1,11 @@
 # Stage 1 - clone the repo
 FROM debian:stretch
 RUN apt-get update
-RUN apt-get install -y git
-RUN git clone "https://github.com/phil-hudson/airsonic-react.git" --depth 1
-RUN git pull origin master
+RUN apt-get install -y wget unzip
+#RUN git clone "https://github.com/phil-hudson/airsonic-react.git" --depth 1
+RUN wget --no-check-certificate -O master.zip 'https://github.com/phil-hudson/airsonic-react/archive/master.zip'
+RUN unzip master.zip
+RUN cd airsonic-react-master
 
 # Stage 2 - the build process
 FROM node:10.13 as build-deps
