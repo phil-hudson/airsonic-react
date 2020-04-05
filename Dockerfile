@@ -3,6 +3,7 @@ FROM debian:stretch
 RUN apt-get update
 RUN apt-get install -y git
 RUN git clone "https://github.com/phil-hudson/airsonic-react.git" --depth 1
+RUN git pull origin master
 
 # Stage 2 - the build process
 FROM node:10.13 as build-deps
