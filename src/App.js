@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import NavTop from './components/pages/navbar.component';
-import SideNav from './components/pages/sidenav.component';
+import NavTop from './components/pages/navtop.component';
 import Login from './components/pages/login.component';
 import Home from './components/pages/home.component';
 import Album from './components/pages/album.component';
@@ -23,8 +22,6 @@ function App() {
                 flex: 1,
             }}>
                 <NavTop/>
-                <div style={{paddingTop: '56px'}}/>
-                <SideNav/>
                 <Switch>
                     <Route exact path='/' component={Login}/>
                     {/*TODO sort this mess out*/}
@@ -35,7 +32,7 @@ function App() {
                             flex: 1,
                         }}>
                             {playerToggled === false && (
-                                <div style={{'marginLeft': '160px', height: '100%'}}>
+                                <div style={{height: '100%'}}>
                                     <Switch>
                                         <Route exact path='/' component={Login}/>
                                         <Route exact path='/home' component={Home}/>

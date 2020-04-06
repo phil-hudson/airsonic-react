@@ -15,7 +15,6 @@ const Player = (props) => {
         // TODO move to class
             <div style={{
                 height: props.toggled ? '100%' : '',
-                marginLeft: '160px',
                 backgroundColor: '#212527',
                 color: 'white',
                 // TODO fix force player to bottom, allow upnext to scroll underneath!

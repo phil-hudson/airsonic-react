@@ -1,0 +1,27 @@
+@import 'colors';
+
+#searchBarWrap{
+  display: flex;
+  justify-content: center;
+}
+
+#searchBar{
+  width: 300px;
+  height: 42.5px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  font-size: 1em;
+  border-radius: 20px 0px 0px 20px;
+  padding: 0 20px;
+}
+
+#searchBtn{
+  box-sizing: border-box;
+  width: 42.5px;
+  height: 42.5px;
+  border-radius: 0px 20px 20px 0px;
+  color: #07051a;
+  text-align: center;
+  transition: all 1s;
+}

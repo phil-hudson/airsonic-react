@@ -2,6 +2,9 @@
 import * as React from 'react';
 import {useState} from 'react';
 import {useHistory} from "react-router"
+import '../../css/search.scss';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 export default function SearchForm() {
     const [searchQuery, setSearchQuery] = useState();
@@ -21,10 +24,14 @@ export default function SearchForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="form-inline my-2 my-lg-0">
-            <input onChange={handleSearchQueryChange} className="form-control mr-sm-2" type="search" name="search"
-                   placeholder="Search" aria-label="Search" value={searchQuery}/>
-            <button className="btn btn-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div id="searchBarWrap">
+            <form id="searchForm" onSubmit={handleSubmit} className="">
+                <input id='searchBar' onChange={handleSearchQueryChange} className="" type="search" name="search"
+                       placeholder="Search & Explore..." aria-label="Search" value={searchQuery}/>
+                <button  id="searchBtn"  form='searchForm' content='Submit' value='Submit'><FontAwesomeIcon icon={faCoffee} /></button>
+            </form>
+        </div>
+
+
     );
 };
