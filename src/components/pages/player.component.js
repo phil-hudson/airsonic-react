@@ -12,12 +12,8 @@ function mapStateToProps(state) {
 
 const Player = (props) => {
     return (
-        // TODO move to class
-            <div style={{
-                height: props.toggled ? '100%' : '',
-                backgroundColor: '#212527',
-                color: 'white',
-                // TODO fix force player to bottom, allow upnext to scroll underneath!
+            <div id='playerWrapper' style={{
+                height: props.toggled ? '100%' : '210px',
             }}>
                 {props.toggled ? (
                     <ArrowDropDownOutlined className='pointer' onClick={() => props.setPlayerToggled(false)}/>

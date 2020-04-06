@@ -32,7 +32,7 @@ function App() {
                             flex: 1,
                         }}>
                             {playerToggled === false && (
-                                <div style={{height: '100%'}}>
+                                <div style={{height: '100%', marginBottom: '210px'}}>
                                     <Switch>
                                         <Route exact path='/' component={Login}/>
                                         <Route exact path='/home' component={Home}/>
